@@ -25,3 +25,41 @@ header {
   justify-content: flex-end;
   align-items: center;
 }
+
+.menu-openner {
+  margin-right: 15px;
+  font-size: 26px;
+  background-color: #a9dcff;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+.menu-openner span {
+  margin-right:10px;
+}
+
+.menu-closer {
+  width:32px;
+  height:32px;
+  display:none;
+  font-size: 30px;
+}
+
+aside {
+  background-color:#9ccbe6;
+  width:0vw;
+  font-family:'Hepta Slab', Helvetica, Arial;
+  transition:all ease .2s;
+  overflow-x:hidden;
+}
+
+aside.show {
+  width:30vw;
+}
+.cart--area {
+  padding:20px;
+}
+main {
+  flex:1;
+  padding:20px;
+}
