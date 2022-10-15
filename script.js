@@ -88,3 +88,11 @@ cs(".pizzaInfo--size").forEach((size, sizeIndex)=>{
 //Qual a pizza
 //Qual o tamanho
 //Quantidade
+c(".pizza--addButton").addEventListener("click", ()=>{
+   let size = parseInt(c(".pizzaInfo--size.selected").getAttribute("data-key"));
+    cart.push({id:pizzaJson[modalKey].id,
+   size,
+qt:modalQt
+});
+closeModal;
+});
