@@ -1,4 +1,7 @@
+//Declaração de variaveis 
+let cart = [];
 let modalQt = 1;
+let modalKey = 0;
 const c = (el) =>document.querySelector(el);
 const cs = (el) =>document.querySelectorAll(el);
 
@@ -19,7 +22,10 @@ pizzaJson.map((item, index) =>{
       e.preventDefault();
       //pegando os produtos pizza
       let key = e.target.closest(".pizza-item").getAttribute("data-key");
+      //Resetando a quantidade
       modalQt = 1;
+      //Informando qual é a pizza
+      modalKey = key;
 
       //preechendo as informações abaixo
       c(".pizzaBig img").src = pizzaJson[key].img;
@@ -77,3 +83,8 @@ cs(".pizzaInfo--size").forEach((size, sizeIndex)=>{
       size.classList.add("selected");
    });
 });
+
+//Adicionando as pizzas ao carrinho com detalhes, tamanho, quantidade
+//Qual a pizza
+//Qual o tamanho
+//Quantidade
