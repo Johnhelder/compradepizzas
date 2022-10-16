@@ -88,57 +88,106 @@ cs(".pizzaInfo--size").forEach((size, sizeIndex)=>{
 //Qual a pizza
 //Qual o tamanho
 //Quantidade
-c(".pizza--addButton").addEventListener("click", ()=>{
-   let size = parseInt(c(".pizzaInfo--size.selected").getAttribute("data-key"));
+
+
+c('.pizzaInfo--addButton').addEventListener('click', ()=>{
+   let size = parseInt(c('.pizzaInfo--size.selected').getAttribute('data-key'));
+   let identifier = pizzaJson[modalKey].id+'@'+size;
    //Juntando tamanho da pizza com a quantidade
-   let identifier = pizzaJson[modalKey].id+"@"+size;
-
    let key = cart.findIndex((item)=>item.identifier == identifier);
+   if(key > -1) {
+       cart[key].qt += modalQt;
+   } else {
+       cart.push({
+           identifier,
+           id:pizzaJson[modalKey].id,
+           size,
+           qt:modalQt
+       });
+   }
+   updateCart();
+   closeModal();
+});
+//Adicionando o evento para mostrar abrir o carrinho no mobile
+c('.menu-openner').addEventListener('click', () => {
+   if(cart.length > 0) {
+       c('aside').style.left = '0';
+   }
+});
+//Funçao que executa o fechamento do carrinho no mobile
+c('.menu-closer').addEventListener('click', ()=>{
+   c('aside').style.left = '100vw';
+});
 
-   if(key > -1){
-      cart[key].qt += modalQt;
-   }else{
-    cart.push({
-      identifier,
-      id:pizzaJson[modalKey].id, 
-      size,
-qt:modalQt
-});
-}
-updateCart();
-closeModal;
-});
 
 //Atualizando carrinho
-function updateCart(){
-   if(cart.length > 0){
-      c("aside").classList.add("show");
-      c(".cart").innerHTML = "";
-      for(let i in cart){
-         let pizzaItem = pizzaJson.find((item)=>item.id == cart[i].id);
-         //Preechendo items do carrinho
-          let cartItem = c(".models .cart--item").cloneNode(true);
-         let pizzaSizeName;
-         switch(cart[i].size){
-            case 0:
-               pizzaSizeName = "P";
-               break;
-               case 1:
-                  pizzaSizeName = "M";
-                  break;
-                  case 1:
-                     pizzaSizeName = "G";
-                     break;
-         }
-         let pizzaName = `${pizzaItem.name} (${pizzaSizeName})`;
 
-          cartItem.querySelector("img").src = pizzaItem.img;
-          cartItem.querySelector(".cart--item-nome").innerHTML = pizzaName;
-          cartItem.querySelector(".cart--item--qt").innerHTML = cart[i].qt;
-          
-          c(".cart").append(cartItem);
-      }
-   }else{
-      c("aside").classList.remove("show");
+
+function updateCart() {
+   //Adicionando a quantidade de pizzas no carrinho
+   c('.menu-openner span').innerHTML = cart.length;
+
+   if(cart.length > 0) {
+       c('aside').classList.add('show');
+       c('.cart').innerHTML = '';
+
+       let subtotal = 0;
+       let desconto = 0;
+       let total = 0;
+
+       for(let i in cart) {
+           let pizzaItem = pizzaJson.find((item)=>item.id == cart[i].id);
+           //Calculando os subtotais 
+           subtotal += pizzaItem.price * cart[i].qt;
+
+           let cartItem = c('.models .cart--item').cloneNode(true);
+
+           let pizzaSizeName;
+           switch(cart[i].size) {
+               case 0:
+                   pizzaSizeName = 'P';
+                   break;
+               case 1:
+                   pizzaSizeName = 'M';
+                   break;
+               case 2:
+                   pizzaSizeName = 'G';
+                   break;
+           }
+           let pizzaName = `${pizzaItem.name} (${pizzaSizeName})`;
+
+           cartItem.querySelector('img').src = pizzaItem.img;
+           cartItem.querySelector('.cart--item-nome').innerHTML = pizzaName;
+           cartItem.querySelector('.cart--item--qt').innerHTML = cart[i].qt;
+           //Selecionar o carrinho e subtrair as quantidades das pizzas
+           cartItem.querySelector('.cart--item-qtmenos').addEventListener('click', ()=>{
+               if(cart[i].qt > 1) {
+                   cart[i].qt--;
+               } else {
+                   cart.splice(i, 1);
+               }
+               updateCart();
+           });
+           //Selecionar o carrinho e aumentar as quantidades das pizzas
+           cartItem.querySelector('.cart--item-qtmais').addEventListener('click', ()=>{
+               cart[i].qt++;
+               updateCart();
+           });
+
+           c('.cart').append(cartItem);
+       }
+
+       desconto = subtotal * 0.1;
+       total = subtotal - desconto;
+
+       c('.subtotal span:last-child').innerHTML = `R$ ${subtotal.toFixed(2)}`;
+       c('.desconto span:last-child').innerHTML = `R$ ${desconto.toFixed(2)}`;
+       c('.total span:last-child').innerHTML = `R$ ${total.toFixed(2)}`;
+
+   } else {
+       //Estilo abaixo fecha carrinho quando a quantidade for zerado no computador
+       c('aside').classList.remove('show');
+       //Estilo abaixo fecha carrinho quando a quantidade for zerado no mobile
+       c('aside').style.left = '100vw';
    }
 }
