@@ -5,9 +5,9 @@
 <a target="_blank" href="https://controledepizza.netlify.app/" align="center" rel="nofollow">Link para o projeto</a>
 <h2>Proprosito de criar Sistema controle de pizzas</h2>
 <p>O objetivo de criar o sistema de controle de pizzas é melhorar de forma geral no dia a dia das pizzarias que tem a
-necesidade de agilidade para fidelizar seus clientes, para que isso
-seja possível o sistema apresenta rapidez para realizar o pedido evitando que os garçons e pessoas responsaveis no processo
-não perda tempo utilizando comandas de papel, agilize seus trabalhos envitando erros.</p>
+necessidade de agilidade para fidelizar seus clientes, para que isso
+seja possível o sistema apresenta rapidez para realizar o pedido evitando que os garçons e pessoas responsáveis no processo
+não perda tempo utilizando comandas de papel, agilize seus trabalhos evitando erros.</p>
 <h1>Aprendizados</h1>
 <p>Nesse sistema foi possível por em prática o uso dos conhecimentos que venho adquirindo em termos de HTML, CSS e JavaScript.
 Fiz muito o uso de funções, requisições, uso do map, laço de repetição FOR de JavaScript.
