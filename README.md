@@ -11,7 +11,7 @@ não perda tempo utilizando comandas de papel, agilize seus trabalhos evitando e
 <h1>Aprendizados</h1>
 <p>Nesse sistema foi possível por em prática o uso dos conhecimentos que venho adquirindo em termos de HTML, CSS e JavaScript.
 Fiz muito o uso de funções, requisições, uso do map, laço de repetição FOR de JavaScript.
-Também pude práticar no CSS a parte de responsividade para que qualquer pessoa possa utilizar o sistema
+Também pude praticar no CSS a parte de responsividade para que qualquer pessoa possa utilizar o sistema
 de dispositivo mobile.</p>
 <h1>Funcionalidades do sistema</h1>
 Inserir pizzas<br>
