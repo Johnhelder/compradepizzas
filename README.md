@@ -3,7 +3,7 @@
 <img src="https://user-images.githubusercontent.com/11904100/196065087-9d4f39d6-1f29-44d6-a0c5-2c78b7212917.png" max-width="100%">
 </div>
 <a target="_blank" href="https://controledepizza.netlify.app/" align="center" rel="nofollow">Link para o projeto</a>
-<h2>Proprosito de criar Sistema controle de pizzas</h2>
+<h2>Propósito de criar Sistema controle de pizzas</h2>
 <p>O objetivo de criar o sistema de controle de pizzas é melhorar de forma geral no dia a dia das pizzarias que tem a
 necessidade de agilidade para fidelizar seus clientes, para que isso
 seja possível o sistema apresenta rapidez para realizar o pedido evitando que os garçons e pessoas responsáveis no processo
